@@ -1,4 +1,4 @@
-var moviesAroundMe = angular.module('moviesAroundMe',[]);
+var moviesAroundMe = angular.module('MoviesAroundMe',['ngResource']);
 
 moviesAroundMe.controller('moviesControl', function() {
   var self = this;

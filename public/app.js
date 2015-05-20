@@ -1,8 +1,8 @@
 var moviesAroundMe = angular.module('MoviesAroundMe',['ngResource']);
 
-moviesAroundMe.controller('moviesControl', ['Search', function(Search) {
+moviesAroundMe.controller('moviesControl', ['OMDb', function(OMDb) {
   var self = this;
-
-  console.log('Helllloooooooooooooooo!');
-  console.log(Search);
+  OMDb.makeRequest();
+  self.requestData = OMDb.requestData();
+  console.log(self.requestData);
 }]);

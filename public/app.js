@@ -5,9 +5,7 @@ moviesAroundMe.controller('moviesControl', ['OMDb', function(OMDb) {
   omdbData: Object;
 
   var self = this;
-  OMDb.makeRequest().then(function(data) {
+  OMDb.makeRequest('home').then(function(data) {
     console.log(data);
   });
-  // console.log(OMDb.makeRequest());
-
 }]);

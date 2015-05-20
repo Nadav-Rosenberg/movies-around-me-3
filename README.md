@@ -13,8 +13,9 @@
 # Rating service (OMDb)
 - Returns a promise
 
+
 - `OMDb.makeRequest(movieTitle).then(function(response) { WORK WITH RESPONSE });`
-- `response` in the above line has these properties that are useful:
+- `response` in the above line (which should be in the controller) has these properties that are useful:
 - response.data.________
 -              .Plot
 -              .imdbRating

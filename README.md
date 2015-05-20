@@ -13,10 +13,10 @@
 # Rating service (OMDb)
 - Returns a promise
 
-`OMDb.makeRequest(movieTitle).then(function(response) { WORK WITH RESPONSE });`
-`response` in the above line has these properties that are useful:
-response.data.________
-             .Plot
-             .imdbRating
-             .tomatoRating (.tomatoRotten, .tomatoUserRating)
-There are a bunch more, simply log `respons` and have a look
+- `OMDb.makeRequest(movieTitle).then(function(response) { WORK WITH RESPONSE });`
+- `response` in the above line has these properties that are useful:
+- response.data.________
+-              .Plot
+-              .imdbRating
+-              .tomatoRating (.tomatoRotten, .tomatoUserRating)
+- There are a bunch more, simply log `respons` and have a look

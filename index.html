@@ -8,10 +8,10 @@
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="app.js"></script>
-    <script src="services/search.js"></script>
-  <body ng-controller="moviesControl">
+    <script src="services/omdb.js"></script>
+  <body ng-controller="moviesControl as mCtrl">
     <div>
-
+      <div>OMDb data:{{mCtrl.requestData}}</div>
       <form class="form-horizontal">
         Postcode: <input type="text" name="postcode">
         Distance: <input type="text" name="distance">
@@ -25,6 +25,14 @@
         </li>
 
       </ul>
+
+      <form class="ratings-form">
+        Movie title: <input type="text" ng-model="mCtrl.movieTitle">
+        <button class="btn" ng-click="mCtrl.updateMovieRating()">Search</button>
+      </form>
+      <div>
+        IMDb rating: <p>{{mCtrl.imdbRating}}</p>
+      </div>
     </div>
 
   </body>

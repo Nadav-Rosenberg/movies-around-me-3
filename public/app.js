@@ -1,6 +1,6 @@
 var moviesAroundMe = angular.module('MoviesAroundMe',['ngResource']);
 
-moviesAroundMe.controller('moviesControl', ['OMDb', function(OMDb) {
+moviesAroundMe.controller('moviesControl', ['OMDb',  'Moviesapi', function(OMDb, Moviesapi) {
   self = this;
   omdbData: Object;
 
@@ -12,4 +12,11 @@ moviesAroundMe.controller('moviesControl', ['OMDb', function(OMDb) {
       self.imdbRating = response.data.imdbRating;
     });
   };
+
+  self.findCinemas = function() {
+    console.log(Moviesapi.makeRequest());
+  };
+
+  self.findCinemas();
+
 }]);

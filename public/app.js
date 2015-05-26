@@ -13,10 +13,41 @@ moviesAroundMe.controller('moviesControl', ['OMDb',  'Moviesapi', function(OMDb,
     });
   };
 
-  self.findCinemas = function() {
-    console.log(Moviesapi.makeRequest());
+  self.findCinemas = function(call_me_when_finished) {
+    Moviesapi.makeRequest("sw74ls", function(cinemas) {
+      var count = 0, array_length = cinemas.length;
+      for(var i=0; i < cinemas.length; i++) {
+          OMDb.makeRequest(cinemas[i][0]).then(function(response) {
+
+            for(var i=0; i < cinemas.length; i++) {
+              if (cinemas[i][0].slice(0,-7) == response.data.Title) {
+                cinemas[i][3] = response.data.imdbRating;
+                console.log(cinemas);
+
+                cinemas.sort(function(a, b) { 
+                  return a[3] > b[3] ? 1 : -1;
+                });
+
+                console.log(cinemas);
+
+              };
+            };
+            // console.log(cinemas);  
+          });
+
+        count++;
+
+        if (count == array_length)
+        {
+          call_me_when_finished(cinemas);
+        }
+      }
+
+    });
   };
 
-  self.findCinemas();
+  self.findCinemas(function(cinemas) {
+
+  });
 
 }]);

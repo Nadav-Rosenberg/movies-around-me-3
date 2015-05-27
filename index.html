@@ -14,7 +14,7 @@
     <div>
       <form class="form-horizontal">
         Postcode: <input type="text" ng-model="mCtrl.postcode">
-        <button class="btn" ng-click="mCtrl.findCinemas()">Search</button>
+        <button class="btn" ng-click="mCtrl.findMoviesAroundMe()">Search</button>
       </form>
 
 <!--       <form class="ratings-form">
@@ -26,8 +26,8 @@
       </div>
     </div> -->
 
-    <ul class="list-group" ng-repeat="movie in mCtrl.moviesList">
-        <li>{{movie.title}}, -{{movie.cinema}}, -{{movie.distance}} -{{movie.rating}}</li>
+    <ul class="list-group" ng-repeat="movie in mCtrl.moviesList | orderBy:'-rating'">
+        <li>{{movie.title}} ** {{movie.cinema}} ** {{movie.distance}} ** rating: {{movie.rating}}</li>
     </ul>
 
   </body>

@@ -6,21 +6,24 @@ moviesAroundMe.controller('moviesControl', ['OMDb',  'Moviesapi', function(OMDb,
   self.postcode;
 
   // self.updateMovieRating = function(){
-  //   OMDb.makeRequest(self.movieTitle).then(function(response) {
+  //   OMDb.getRating(self.movieTitle).then(function(response) {
   //     self.imdbRating = response.data.imdbRating;
   //   });
   // };
 
-  self.findCinemas = function() {
-    Moviesapi.makeRequest(self.postcode, function(movies) {
+  self.findMoviesAroundMe = function() {
+    Moviesapi.getMovies(self.postcode, function(movies) {
       self.moviesList = movies;
       for(var i=0; i < movies.length; i++) {
-        OMDb.makeRequest(movies[i].title.slice(0, -7)).then(function(response) {
+        OMDb.getRating(movies[i].title.slice(0, -7)).then(function(response) {
+          console.log(response.data);
+          console.log(response.data.imdbRating);
           for(var i=0; i < movies.length; i++) {
             if (movies[i].title.slice(0,-7).toLowerCase() == response.data.Title.toLowerCase()) {
-              movies[i].rating = response.data.imdbRating;
-              console.log(movies);
-            };
+              if (response.data.imdbRating !== "N/A") {
+                movies[i].rating = response.data.imdbRating;             
+              };
+            };  
           };
         });
       }
@@ -28,3 +31,4 @@ moviesAroundMe.controller('moviesControl', ['OMDb',  'Moviesapi', function(OMDb,
   };
 
 }]);
+

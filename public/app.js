@@ -4,50 +4,41 @@ moviesAroundMe.controller('moviesControl', ['OMDb',  'Moviesapi', function(OMDb,
   self = this;
   omdbData: Object;
 
-  var self = this;
+  self.moviesList = [];
+  // self.movies = [{title: , cinema: , distance: , rating: }, {title: , cinema: , distance: , rating: }...];
 
   self.updateMovieRating = function(){
-    console.log('Movie title: ' + self.movieTitle)
     OMDb.makeRequest(self.movieTitle).then(function(response) {
       self.imdbRating = response.data.imdbRating;
     });
   };
 
   self.findCinemas = function(call_me_when_finished) {
-    Moviesapi.makeRequest("sw74ls", function(cinemas) {
-      var count = 0, array_length = cinemas.length;
-      for(var i=0; i < cinemas.length; i++) {
-          OMDb.makeRequest(cinemas[i][0]).then(function(response) {
+    Moviesapi.makeRequest("sw74ls", function(films) {
+      self.movies = films;
+      for(var i=0; i < films.length; i++) {
+          OMDb.makeRequest(films[i][0]).then(function(response) {
 
-            for(var i=0; i < cinemas.length; i++) {
-              if (cinemas[i][0].slice(0,-7) == response.data.Title) {
-                cinemas[i][3] = response.data.imdbRating;
-                console.log(cinemas);
+            for(var i=0; i < films.length; i++) {
+              if (films[i][0].slice(0,-7) == response.data.Title) {
+                films[i][3] = response.data.imdbRating;
+                console.log(films);
 
-                cinemas.sort(function(a, b) { 
+                films.sort(function(a, b) { 
                   return a[3] > b[3] ? 1 : -1;
                 });
 
-                console.log(cinemas);
+                console.log(films);
 
               };
             };
-            // console.log(cinemas);  
           });
 
-        count++;
-
-        if (count == array_length)
-        {
-          call_me_when_finished(cinemas);
-        }
       }
 
     });
   };
 
-  self.findCinemas(function(cinemas) {
-
-  });
+  self.findCinemas();
 
 }]);

@@ -9,7 +9,6 @@ moviesAroundMe.factory('Moviesapi', ['$http', function($http) {
 
         return $http.get('http://aqueous-badlands-8518.herokuapp.com/cinemas/find/' + postcode)
           .then(function(response) { 
-            // console.log(response.data);
             var count = 0, response_length = response.data.length;
             for(var i =0; i < response_length; i++) {
 
@@ -20,11 +19,9 @@ moviesAroundMe.factory('Moviesapi', ['$http', function($http) {
                 .then(function(response) {
                    var size = response.data.length;
                    for(var i=0; i < (size - 1); i++) {
-                     array.push([response.data[i].title, response.data[(size -1)].a, response.data[(size -1)].b]);                   
+                     array.push({title: response.data[i].title, cinema: response.data[(size -1)].a, distance: response.data[(size -1)].b});                   
                    };
                   
-                     
-
                   count++;
 
                   if (count == response_length)

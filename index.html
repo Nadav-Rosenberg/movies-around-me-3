@@ -12,29 +12,23 @@
     <script src="services/moviesapi.js"></script>
   <body ng-controller="moviesControl as mCtrl">
     <div>
-      <div>OMDb data:{{mCtrl.requestData}}</div>
       <form class="form-horizontal">
-        Postcode: <input type="text" name="postcode">
-        Distance: <input type="text" name="distance">
-        <button class="btn">Search</button>
+        Postcode: <input type="text" ng-model="mCtrl.postcode">
+        <button class="btn" ng-click="mCtrl.findCinemas()">Search</button>
       </form>
 
-      <ul class="list-group">
-
-        <li class="list-group-item">
-      <p>Title: movie #1</p><p>Distance: distance #1</p>
-        </li>
-
-      </ul>
-
-      <form class="ratings-form">
+<!--       <form class="ratings-form">
         Movie title: <input type="text" ng-model="mCtrl.movieTitle">
         <button class="btn" ng-click="mCtrl.updateMovieRating()">Search</button>
       </form>
       <div>
         IMDb rating: <p>{{mCtrl.imdbRating}}</p>
       </div>
-    </div>
+    </div> -->
+
+    <ul class="list-group" ng-repeat="movie in mCtrl.moviesList">
+        <li>{{movie.title}}, -{{movie.cinema}}, -{{movie.distance}} -{{movie.rating}}</li>
+    </ul>
 
   </body>
 </html>

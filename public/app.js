@@ -1,44 +1,30 @@
 var moviesAroundMe = angular.module('MoviesAroundMe',['ngResource']);
 
 moviesAroundMe.controller('moviesControl', ['OMDb',  'Moviesapi', function(OMDb, Moviesapi) {
-  self = this;
-  omdbData: Object;
+  var self = this;
+  self.moviesList = []; // [{title: , cinema: , distance: , rating: }...];
+  self.postcode;
 
-  self.moviesList = [];
-  // self.movies = [{title: , cinema: , distance: , rating: }, {title: , cinema: , distance: , rating: }...];
+  // self.updateMovieRating = function(){
+  //   OMDb.makeRequest(self.movieTitle).then(function(response) {
+  //     self.imdbRating = response.data.imdbRating;
+  //   });
+  // };
 
-  self.updateMovieRating = function(){
-    OMDb.makeRequest(self.movieTitle).then(function(response) {
-      self.imdbRating = response.data.imdbRating;
-    });
-  };
-
-  self.findCinemas = function(call_me_when_finished) {
-    Moviesapi.makeRequest("sw74ls", function(films) {
-      self.movies = films;
-      for(var i=0; i < films.length; i++) {
-          OMDb.makeRequest(films[i][0]).then(function(response) {
-
-            for(var i=0; i < films.length; i++) {
-              if (films[i][0].slice(0,-7) == response.data.Title) {
-                films[i][3] = response.data.imdbRating;
-                console.log(films);
-
-                films.sort(function(a, b) { 
-                  return a[3] > b[3] ? 1 : -1;
-                });
-
-                console.log(films);
-
-              };
+  self.findCinemas = function() {
+    Moviesapi.makeRequest(self.postcode, function(movies) {
+      self.moviesList = movies;
+      for(var i=0; i < movies.length; i++) {
+        OMDb.makeRequest(movies[i].title.slice(0, -7)).then(function(response) {
+          for(var i=0; i < movies.length; i++) {
+            if (movies[i].title.slice(0,-7).toLowerCase() == response.data.Title.toLowerCase()) {
+              movies[i].rating = response.data.imdbRating;
+              console.log(movies);
             };
-          });
-
+          };
+        });
       }
-
     });
   };
-
-  self.findCinemas();
 
 }]);

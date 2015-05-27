@@ -1,34 +1,50 @@
 <!doctype html>
 <html lang="en" ng-app="MoviesAroundMe">
-  <head>
-    <meta charset="utf-8">
-    <title>Movies Around Me</title>
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/angular-resource/angular-resource.js"></script>
-    <script src="app.js"></script>
-    <script src="services/omdb.js"></script>
-    <script src="services/moviesapi.js"></script>
-  <body ng-controller="moviesControl as mCtrl">
-    <div>
-      <form class="form-horizontal">
-        Postcode: <input type="text" ng-model="mCtrl.postcode">
-        <button class="btn" ng-click="mCtrl.findMoviesAroundMe()">Search</button>
-      </form>
+ <head>
+   <meta charset="utf-8">
+   <title>Movies Around Me</title>
+   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+   <link rel="stylesheet" href="css/viewTemplateStyle.css">
+   <link href='http://fonts.googleapis.com/css?family=Roboto:400,700italic' rel='stylesheet' type='text/css'>
+   <script src="bower_components/jquery/dist/jquery.js"></script>
+   <script src="bower_components/angular/angular.js"></script>
+   <script src="bower_components/angular-resource/angular-resource.js"></script>
+   <script src="app.js"></script>
+   <script src="services/omdb.js"></script>
+   <script src="services/moviesapi.js"></script>
+ </head>
+ <body ng-controller="moviesControl as mCtrl">
+   <div class="mainContainer">
+     <div class='header'>
+       <input ng-model="mCtrl.postcode" class="postcode-search" type='text' name="postcode" placeholder="Enter your postcode">
+       <span class="site-title">Movies Around Me</span>
+     
+       <button class='btn find-movies-button' ng-click="mCtrl.findMoviesAroundMe()">Find Movies</button>
+     </div>
 
-<!--       <form class="ratings-form">
-        Movie title: <input type="text" ng-model="mCtrl.movieTitle">
-        <button class="btn" ng-click="mCtrl.updateMovieRating()">Search</button>
-      </form>
-      <div>
-        IMDb rating: <p>{{mCtrl.imdbRating}}</p>
-      </div>
-    </div> -->
+     <div class="content-container">
+       <div class='content-left-column'>
+         <!-- Table should be angular filled -->
+         <table class="table table-hover movie-list-table">
+           <tr ng-repeat="movie in mCtrl.moviesList | orderBy:'-imdb'" ng-click="mCtrl.updateMap(movie.address)">
+             <td id="movie-poster"><img src="https://cdn.evbuc.com/eventlogos/37137568/big28officialmovieposter29.jpeg">{{movie.poster}}</td>
+             <td id="movie-title">{{movie.title}}</td>
+             <td>
+               <div id="movie-rating">IMDb: {{movie.imdb}}</div>
+             </td>
+             <td id="movie-distance">{{movie.distance}}</td>
+             <td><img src="images/arrow.png" class="arrow"></td>
+           </tr>
+         </table>
+       </div>
 
-    <ul class="list-group" ng-repeat="movie in mCtrl.moviesList | orderBy:'-rating'">
-        <li>{{movie.title}} ** {{movie.cinema}} ** {{movie.distance}} ** rating: {{movie.rating}}</li>
-    </ul>
-
-  </body>
+       <div class='content-right-column'>
+         <div class="google-maps">
+           <iframe id="map-frame" frameborder="0" style="border:0"
+           src=""></iframe>
+         </div>
+       </div>
+     </div>
+   </div>
+ </body>
 </html>

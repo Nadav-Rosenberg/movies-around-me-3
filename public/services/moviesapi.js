@@ -22,6 +22,7 @@ moviesAroundMe.factory('Moviesapi', ['$http', function($http) {
           $http.get('http://aqueous-badlands-8518.herokuapp.com/cinemas/' + 
                      venue_id + '/showings' + '?a=' + address + '&b=' + distance)
             .then(function(response) {
+              console.log(response.data);
               addMoviesFromCinema(response);
               updateMoviesList(movies);
             });               

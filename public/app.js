@@ -12,7 +12,6 @@ moviesAroundMe.controller('moviesControl', ['OMDb',  'Moviesapi', function(OMDb,
       self.moviesList = movies;
       for(var i=0; i < movies.length; i++) {
         OMDb.getRating(movies[i].title.slice(0, -7)).then(function(response) {
-          console.log(response.data);
           for(var i=0; i < movies.length; i++) {
             if (movies[i].title.slice(0,-7).toLowerCase() == response.data.Title.toLowerCase()) {
                 movies[i].poster = response.data.Poster;

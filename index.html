@@ -28,7 +28,7 @@
          <!-- Table should be angular filled -->
          <table class="table table-hover movie-list-table">
            <tr ng-repeat="movie in mCtrl.moviesList | orderBy:'-imdb'" ng-click="mCtrl.updateMap(movie.address)">
-             <td id="movie-poster"><img src="https://cdn.evbuc.com/eventlogos/37137568/big28officialmovieposter29.jpeg">{{movie.poster}}</td>
+             <td id="movie-poster"><img src={{movie.poster}}></td>
              <td id="movie-title">{{movie.title}}</td>
              <td>
                <div id="movie-rating">IMDb: {{movie.imdb}}</div>

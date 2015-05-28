@@ -1,10 +1,17 @@
 {
   "name": "MoviesAroundMe2",
   "version": "1.0.0",
-  "description": "- starting the project with a dev branch",
-  "main": "index.js",
+  "description": "Movies around me Angular app",
+  "main": "server.js",
+  "dependencies": {
+    "bower": "^1.4.1",
+    "express": "^4.12.4"
+  },
+  "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "postinstall": "bower install"
   },
   "repository": {
     "type": "git",
@@ -15,8 +22,5 @@
   "bugs": {
     "url": "https://github.com/MoviesAroundMe/MoviesAroundMe2/issues"
   },
-  "homepage": "https://github.com/MoviesAroundMe/MoviesAroundMe2",
-  "dependencies": {
-    "express": "^4.12.4"
-  }
+  "homepage": "https://github.com/MoviesAroundMe/MoviesAroundMe2"
 }

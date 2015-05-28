@@ -34,6 +34,10 @@
              <td>
                <div id="movie-rating">IMDb: {{movie.imdb}}</div>
              </td>
+
+            <td>
+              <div ng-repeat="time in movie.times">{{time}}</div>
+            </td>
              <td id="movie-distance">{{movie.distance}}</td>
              <td><img src="images/arrow.png" class="arrow"></td>
            </tr>

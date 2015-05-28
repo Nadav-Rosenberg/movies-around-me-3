@@ -7,7 +7,7 @@ moviesAroundMe.factory('Moviesapi', ['$http', function($http) {
   var addMoviesFromCinema = function(response) {
     var size = response.data.length;
     for(var i=0; i < (size - 1); i++) {
-      movies.push({title: response.data[i].title, address: response.data[(size -1)].a, distance: response.data[(size -1)].b, imdb: " "});                   
+      movies.push({title: response.data[i].title, address: response.data[(size -1)].a, distance: response.data[(size -1)].b, imdb: " ", times: response.data[i].time});                   
     };
   }
 

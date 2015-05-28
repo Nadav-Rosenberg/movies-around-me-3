@@ -17,8 +17,9 @@
    <div class="mainContainer">
      <div class='header'>
        <input ng-model="mCtrl.postcode" class="postcode-search" type='text' name="postcode" placeholder="Enter your postcode">
+       <div class="loader">Loading...</div>
        <span class="site-title">Movies Around Me</span>
-     
+
        <button class='btn find-movies-button' ng-click="mCtrl.findMoviesAroundMe()">Find Movies</button>
      </div>
 

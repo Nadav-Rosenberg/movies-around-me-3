@@ -7,6 +7,7 @@ moviesAroundMe.controller('moviesControl', ['OMDb',  'Moviesapi', function(OMDb,
 
 
   self.findMoviesAroundMe = function() {
+    $(".loader").fadeIn();
     Moviesapi.getMovies(self.postcode, function(movies) {
       self.moviesList = movies;
       for(var i=0; i < movies.length; i++) {
@@ -16,9 +17,13 @@ moviesAroundMe.controller('moviesControl', ['OMDb',  'Moviesapi', function(OMDb,
             if (movies[i].title.slice(0,-7).toLowerCase() == response.data.Title.toLowerCase()) {
                 movies[i].poster = response.data.Poster;
               if (response.data.imdbRating !== "N/A") {
-                movies[i].imdb = response.data.imdbRating;             
+                movies[i].imdb = response.data.imdbRating;
               };
-            };  
+            };
+
+            if(i===movies.length-1) {
+              $(".loader").fadeOut();
+            }
           };
         });
       }
@@ -37,4 +42,3 @@ moviesAroundMe.controller('moviesControl', ['OMDb',  'Moviesapi', function(OMDb,
   // };
 
 }]);
-

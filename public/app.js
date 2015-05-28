@@ -34,10 +34,10 @@ moviesAroundMe.controller('moviesControl', ['OMDb',  'Moviesapi', function(OMDb,
      $("#map-frame").attr('src', 'https://www.google.com/maps/embed/v1/directions?origin='+self.postcode+'&destination='+cinema+'&key=AIzaSyBCj5rD1yeJmhglY3eapLgqW1GC8WZDoP0')
   }
 
-  // self.updateMovieRating = function(){
-  //   OMDb.getRating(self.movieTitle).then(function(response) {
-  //     self.imdbRating = response.data.imdbRating;
-  //   });
-  // };
+  $('#postcode').keypress(function(e){
+      if(e.which == 13){//Enter key pressed
+          self.findMoviesAroundMe();
+      }
+  });
 
 }]);

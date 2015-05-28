@@ -159,8 +159,11 @@ h3 {
   animation: load7 1.8s infinite ease-in-out;
 }
 .loader {
+  display: none;
+  top: 0px;
+  left: 220px;
   font-size: 10px;
-  position: relative;
+  position: absolute;
   text-indent: -9999em;
   -webkit-transform: translateZ(0);
   -ms-transform: translateZ(0);

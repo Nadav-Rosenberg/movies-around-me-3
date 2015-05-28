@@ -9,6 +9,7 @@
    <script src="bower_components/jquery/dist/jquery.js"></script>
    <script src="bower_components/angular/angular.js"></script>
    <script src="bower_components/angular-resource/angular-resource.js"></script>
+   <script src="bower_components/angular-ui-utils/ui-utils.js"></script>
    <script src="app.js"></script>
    <script src="services/omdb.js"></script>
    <script src="services/moviesapi.js"></script>
@@ -27,7 +28,7 @@
        <div class='content-left-column'>
          <!-- Table should be angular filled -->
          <table class="table table-hover movie-list-table">
-           <tr ng-repeat="movie in mCtrl.moviesList | orderBy:'-imdb'" ng-click="mCtrl.updateMap(movie.address)">
+           <tr ng-repeat="movie in mCtrl.moviesList | orderBy:'-imdb' | unique: 'title'" ng-click="mCtrl.updateMap(movie.address)">
              <td id="movie-poster"><img src={{movie.poster}}></td>
              <td id="movie-title">{{movie.title}}</td>
              <td>

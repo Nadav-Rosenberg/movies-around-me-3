@@ -104,11 +104,12 @@ button {
 }
 
 td img {
-  width: 50px;
+  width: 115px;
 }
 
 td {
   cursor: pointer;
+  vertical-align: middle;
 }
 
 #movie-poster {
@@ -116,25 +117,53 @@ td {
 }
 
 #movie-title {
+  width: 100%;
+  font-size: 20px;
   font-weight: bold;
-  padding-top: 32px;
   text-align: center;
 }
 
 #movie-distance {
-  padding-top: 32px;
+  margin: 20px;
+  float:left;
   text-align: center;
 }
 
 #movie-rating {
-  padding-top: 25px;
+  margin: 20px;
+  float:left;
   text-align: center;
+}
+
+#times-container {
+  margin: 20px;
+  float: left;
+}
+
+#under-title {
+  font-size: 16px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 300px;
+  height: 140px;
+}
+
+.centered-text {
+  text-align: center;
+}
+
+.upper-container, .lower-container {
+  border: 1px solid green;
+  overflow: hidden;
+  width: auto;
+  height: auto;
 }
 
 .arrow {
   width: 15px;
   height: 15px;
-  margin-top: 25px;
+  margin-top: 50px;
 }
 
 
@@ -164,7 +193,7 @@ h3 {
 }
 .loader {
   display: none;
-  top: 0px;
+  top: -1px;
   left: 220px;
   font-size: 10px;
   position: absolute;

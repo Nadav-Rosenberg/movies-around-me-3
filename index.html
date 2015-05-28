@@ -29,17 +29,13 @@
          <!-- Table should be angular filled -->
          <table class="table table-hover movie-list-table">
           <tr ng-repeat="movie in mCtrl.moviesList | orderBy:'-imdb' | unique: 'title'" ng-click="mCtrl.updateMap(movie.address)">
-            <td id="movie-poster"><img src={{movie.poster}}></td>
-            <td>
-              <div id="movie-title" class="centered-text">{{movie.title}}</div>
-              <div id="under-title">
-                <div id="times-container">
-                  <div ng-repeat="time in movie.times" id="movie-time">{{time}}</div>
-                </div>
-                <div id="movie-distance">{{movie.distance}}</div>
-                <div id="movie-rating">IMDb: {{movie.imdb}}</div>
-              </div>
+            <td id="movie-poster" class="movie-info"><img src={{movie.poster}}></td>
+            <td id="movie-title" class="movie-info">{{movie.title}}</td>
+            <td id="times-container" class="movie-info">
+              <div ng-repeat="time in movie.times" id="movie-time">{{time}}</div>
             </td>
+            <td id="movie-rating" class="movie-info">IMDb: {{movie.imdb}}</td>
+            <td id="movie-distance" class="movie-info">{{movie.distance}}</td>
             <td><img src="images/arrow.png" class="arrow"></td>
           </tr>
          </table>

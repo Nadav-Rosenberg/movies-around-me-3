@@ -7,6 +7,7 @@ moviesAroundMe.controller('moviesControl', ['OMDb',  'Moviesapi', function(OMDb,
 
 
   self.findMoviesAroundMe = function() {
+    self.moviesList = [];
     $(".loader").fadeIn();
     Moviesapi.getMovies(self.postcode, function(movies) {
       self.moviesList = movies;

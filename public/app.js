@@ -35,10 +35,4 @@ moviesAroundMe.controller('moviesControl', ['OMDb',  'Moviesapi', function(OMDb,
      $("#map-frame").attr('src', 'https://www.google.com/maps/embed/v1/directions?origin='+self.postcode+'&destination='+cinema+'&key=AIzaSyBCj5rD1yeJmhglY3eapLgqW1GC8WZDoP0')
   }
 
-  $('#postcode').keypress(function(e){
-      if(e.which == 13){//Enter key pressed
-          self.findMoviesAroundMe();
-      }
-  });
-
 }]);

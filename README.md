@@ -1,4 +1,4 @@
-# MoviesAroundMe2
+# Movies - Around - Me - 3 // Benny and Nadav version
 
 - starting the project with a dev branch
 

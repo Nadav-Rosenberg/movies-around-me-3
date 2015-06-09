@@ -7,7 +7,7 @@ describe('App', function() {
     ctrl = $controller('moviesControl');
   }));
 
-  it('initialises with an empty postcode and a movieList', function() {
+  it('initialises with an empty postcode and an empty movieList', function() {
     expect(ctrl.moviesList).toEqual([]);
     expect(ctrl.postcode).toEqual("");
   });

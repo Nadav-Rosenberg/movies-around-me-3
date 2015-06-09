@@ -54,7 +54,7 @@
   .loader {
     top: 40%;
     left: 50%;
-    font-size: 20px;
+    font-size: 40px;
     position: absolute;
     text-indent: -9999em;
     -webkit-transform: translateZ(0);

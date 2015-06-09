@@ -5,6 +5,7 @@
    <title>Movies Around Me</title>
    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
    <link rel="stylesheet" href="css/viewTemplateStyle.css">
+   <link rel="stylesheet" href="css/mobileStyle.css">
    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700italic' rel='stylesheet' type='text/css'>
    <script src="bower_components/jquery/dist/jquery.js"></script>
    <script src="bower_components/angular/angular.js"></script>
@@ -17,7 +18,7 @@
  <body ng-controller="moviesControl as mCtrl">
    <div class="mainContainer">
      <div class='header'>
-       <input ng-model="mCtrl.postcode" class="postcode-search" type='text' id="postcode" placeholder="Enter your postcode">
+       <input ng-model="mCtrl.postcode" class="postcode-search" type='text' id="postcode" placeholder="Postcode">
        <span class="site-title">Movies Around Me</span>
 
        <button class='btn find-movies-button' ng-click="mCtrl.findMoviesAroundMe()">Find Movies</button>

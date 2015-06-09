@@ -25,12 +25,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/MoviesAroundMe/MoviesAroundMe2.git"
+    "url": "https://github.com/Nadav-Rosenberg/movies-around-me-3.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/MoviesAroundMe/MoviesAroundMe2/issues"
+    "url": "https://github.com/Nadav-Rosenberg/movies-around-me-3/issues"
   },
-  "homepage": "https://github.com/MoviesAroundMe/MoviesAroundMe2"
+  "homepage": "https://github.com/Nadav-Rosenberg/movies-around-me-3"
 }

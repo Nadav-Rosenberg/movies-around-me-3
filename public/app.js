@@ -3,7 +3,7 @@ var moviesAroundMe = angular.module('MoviesAroundMe',['ngResource', 'ui.utils'])
 moviesAroundMe.controller('moviesControl', ['OMDb',  'Moviesapi', function(OMDb, Moviesapi) {
   var self = this;
   self.moviesList = []; // [{title: , address: , distance: , imdb: }...];
-  self.postcode;
+  self.postcode = "";
 
 
   self.findMoviesAroundMe = function() {
